@@ -3,8 +3,7 @@ var path = require('path');
 
 var expect = require('expect');
 var postcss = require('postcss');
-
-import postcssHost from "../index.js";
+var postcssHost = require('../index.js');
 
 describe('postcssHost', function() {
   it('should replace :host:pseudo-class to :host(:pseudo-class)', function() {

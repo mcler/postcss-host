@@ -16,7 +16,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers js:@babel/register test/index.js"
+    "test": "./node_modules/.bin/mocha test/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",

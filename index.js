@@ -1,4 +1,4 @@
-import {plugin} from 'postcss';
+var postcss = require('postcss');
 
 /**
  * Check if specified selector is a :host
@@ -33,6 +33,6 @@ function optimise(rule) {
   }
 }
 
-export default plugin('postcss-minify-selectors', () => {
+module.exports = postcss.plugin('postcss-minify-selectors', () => {
   return css => css.walkRules(optimise);
 });
