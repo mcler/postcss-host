@@ -1,6 +1,6 @@
 # postcss-host
 
-> [PostCSS](https://github.com/postcss/postcss) plugin to make :host selectors work properly with pseudo-classes
+> [PostCSS](https://github.com/postcss/postcss) plugin to make :host selectors work properly with pseudo-classes. Forked from [Victor Karpov's plugin](https://github.com/vitkarpov/postcss-host)
 
 ## What is it about
 
@@ -37,7 +37,7 @@ It could be useful when css is produced automatically by some preprocessor so yo
 ## Installation
 
 ```console
-$ npm install postcss-host
+$ npm i postcss-host --save-dev
 ```
 
 ## Usage

@@ -1,17 +1,4 @@
-var postcss = require('postcss');
-
-module.exports = postcss.plugin('postcss-host', function () {
-  return function(css) {
-    css.eachRule(function(rule) {
-      rule.selector = rule.selectors.map(function(selector) {
-        if (isHostSelector(selector)) {
-          return getChangedHostSelector(selector);
-        }
-        return selector;
-      }).join(', '); 
-    });
-  }
-});
+import {plugin} from 'postcss';
 
 /**
  * Check if specified selector is a :host
@@ -30,3 +17,22 @@ function isHostSelector(selector) {
 function getChangedHostSelector(selector) {
   return selector.replace(/:host:(.+)/, ':host(:$1)');
 }
+
+/**
+ * PostCSS rule optimiser
+ * @param {Rule} rule 
+ */
+function optimise(rule) {
+  if (rule.selectors) {
+    rule.selectors = rule.selectors.map(selector => {
+      if (isHostSelector(selector)) {
+        return getChangedHostSelector(selector);
+      }
+      return selector;
+    });
+  }
+}
+
+export default plugin('postcss-minify-selectors', () => {
+  return css => css.walkRules(optimise);
+});
